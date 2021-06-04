@@ -17,6 +17,8 @@ struct CellData{
 
 class ViewAllStatesController: UIViewController{
 
+    var req = BaseRequests()
+    
     @IBOutlet weak var tableViewStates: UITableView!
     var tableViewData = [CellData]()
     var allCases = [CovidByState](){
@@ -32,20 +34,15 @@ class ViewAllStatesController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestToGetCovid()
+        req.requestToGetCovidAllCountry(onSuccess: {covidData in
+            self.allCases = covidData
+        })
         tableViewStates.dataSource = self
         tableViewStates.delegate = self
         tableViewStates.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    func requestToGetCovid(){
-        AF.request("https://covid19-brazil-api.now.sh/api/report/v1/")
-            .validate()
-            .responseDecodable(of: AllCases.self) { (response) in
-                guard let responseCovid = response.value?.all else {return}
-                self.allCases = responseCovid
-            }
-    }
+   
     
 }
 
@@ -97,19 +94,9 @@ extension ViewAllStatesController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func searchCovidStatusInStateSelected(state: String){
-        requestToGetCovid(by: state, onSuccess: {covidData in
+        req.requestToGetCovidByState(by: state, onSuccess: {covidData in
             self.navigationController?.pushViewController(DetailsCovidViewController(with: covidData), animated: true)
         })
-    }
-    
-    func requestToGetCovid(by state: String, onSuccess: @escaping (CovidByState) -> Void){
-        AF.request("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/\(state)")
-            .validate()
-            .responseDecodable(of: CovidByState.self) { (response) in
-                guard let covidResponse = response.value else { return }
-                onSuccess(covidResponse)
-                return
-            }
     }
     
 }

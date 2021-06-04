@@ -9,8 +9,9 @@ import UIKit
 import Alamofire
 
 class HomeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+    var req = BaseRequests()
     
-   
     @IBOutlet weak var buttonSearch: UIButton?
     @IBOutlet weak var pickerViewState: UIPickerView?
     
@@ -29,19 +30,9 @@ class HomeViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     }
     
     func searchCovidStatusInStateSelected(state: String){
-        requestToGetCovid(by: state, onSuccess: {covidData in
+        req.requestToGetCovidByState(by: state, onSuccess: {covidData in
             self.navigationController?.pushViewController(DetailsCovidViewController(with: covidData), animated: true)
         })
-    }
-    
-    func requestToGetCovid(by state: String, onSuccess: @escaping (CovidByState) -> Void){
-        AF.request("https://covid19-brazil-api.now.sh/api/report/v1/brazil/uf/\(state)")
-            .validate()
-            .responseDecodable(of: CovidByState.self) { (response) in
-                guard let covidResponse = response.value else { return }
-                onSuccess(covidResponse)
-                return
-            }
     }
     
     @IBAction func searchCovid(_ sender: Any) {
