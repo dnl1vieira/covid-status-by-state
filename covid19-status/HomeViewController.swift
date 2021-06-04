@@ -8,17 +8,24 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class HomeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var buttonSearch: UIButton!
-    @IBOutlet weak var pickerViewState: UIPickerView!
+   
+    @IBOutlet weak var buttonSearch: UIButton?
+    @IBOutlet weak var pickerViewState: UIPickerView?
+    
     var states: [String] = ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]
     var selectedState = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerViewState.dataSource = self
-        pickerViewState.delegate = self
+        pickerViewState?.dataSource = self
+        pickerViewState?.delegate = self
+    }
+    
+    
+    @IBAction func openAnotherVisualStyle() {
+        self.navigationController?.pushViewController(ViewAllStatesController(), animated: false)
     }
     
     func searchCovidStatusInStateSelected(state: String){

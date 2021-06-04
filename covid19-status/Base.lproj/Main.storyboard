@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bTj-St-QOk">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bTj-St-QOk">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="covid19_status" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="covid19_status" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEw-RB-zez">
-                                <rect key="frame" x="47" y="340" width="320" height="216"/>
+                                <rect key="frame" x="27.666666666666657" y="298" width="320" height="216"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-41-97O">
-                                <rect key="frame" x="147" y="564" width="120" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-41-97O">
+                                <rect key="frame" x="163.66666666666666" y="554" width="48" height="30"/>
                                 <state key="normal" title="Search">
                                     <color key="titleShadowColor" systemColor="tertiaryLabelColor"/>
                                 </state>
@@ -29,12 +28,24 @@
                                     <action selector="searchCovid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o6L-sT-XJd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lO5-Ku-Xgh">
+                                <rect key="frame" x="118" y="228" width="139" height="30"/>
+                                <state key="normal" title="Another Visual Style"/>
+                                <connections>
+                                    <action selector="openAnotherVisualStyle" destination="BYZ-38-t0r" eventType="touchUpInside" id="hbm-vW-ojM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xWc-41-97O" firstAttribute="top" secondItem="ZEw-RB-zez" secondAttribute="bottom" constant="40" id="1NA-lH-vMd"/>
+                            <constraint firstItem="lO5-Ku-Xgh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HyK-db-oLx"/>
                             <constraint firstItem="ZEw-RB-zez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L6V-CQ-MwV"/>
+                            <constraint firstItem="xWc-41-97O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XOE-jM-b9b"/>
                             <constraint firstItem="ZEw-RB-zez" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xan-eD-QcM"/>
+                            <constraint firstItem="ZEw-RB-zez" firstAttribute="top" secondItem="lO5-Ku-Xgh" secondAttribute="bottom" constant="40" id="kMW-g0-0sb"/>
+                            <constraint firstItem="ZEw-RB-zez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nb0-6O-xXw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MnR-Fc-sEj"/>
@@ -53,7 +64,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bTj-St-QOk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="314-uj-4Cd">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
